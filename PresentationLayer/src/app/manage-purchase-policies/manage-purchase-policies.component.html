@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Manage purchase policies page</title>
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400" rel="stylesheet">
+</head>
+<body>
+    <h2>Purchase policies in {{storeName}}</h2>
+    <hr class="spacer">
+    <div *ngIf="purchasePolicies?.length > 0">
+        <div *ngFor="let purchasePolicy of purchasePolicies">
+            <hr class="spacer">
+            <h3>{{purchasePolicy.Description}}</h3>
+        </div>
+    </div>
+    <div *ngIf="actionFailed0 == true">
+        <div class="form-signin-heading" style="color:red;">{{messageToUser}}</div>
+    </div>
+    <hr class="spacer">
+    <button (click)="AddItemMinMaxPurchasePolicy()">Add item min max purchase policy</button>
+    <hr class="spacer">
+    <button (click)="AddStoreMinMaxPurchasePolicy()">Add store min max purchase policy</button>
+    <hr class="spacer">
+    <button (click)="AddDaysNotAllowedPurchasePolicy()">Add days not allowed purchase policy</button>
+    <hr class="spacer">
+    <div class="container">
+        <h3>Compose 2 purchase policies</h3>
+        <form [formGroup]="formPurchasePolicyComposite" (ngSubmit)="ComposeTwoPurchasePolicies()">
+            <hr class="spacer">
+            <h3>Choose left purchase policy</h3>
+            <div class="form-group">
+                <select formControlName="formPurchasePolicyLeft" required>
+                    <option *ngFor="let purchasePolicy of purchasePolicies" [ngValue]="purchasePolicy">{{purchasePolicy.Description}}</option>
+                </select>
+            </div>
+            <hr class="spacer">
+            <h3>Choose right purchase policy</h3>
+            <div class="form-group">
+                <select formControlName="formPurchasePolicyRight" required>
+                    <option *ngFor="let purchasePolicy of purchasePolicies" [ngValue]="purchasePolicy">{{purchasePolicy.Description}}</option>
+                </select>
+            </div>
+            <hr class="spacer">
+            <h3>Choose operator of the composite</h3>
+            <div class="form-group">
+                <select formControlName="formOperator" required>
+                    <option *ngFor="let operator of operatorsForComopsite" [ngValue]="operator">{{operator}}</option>
+                </select>
+            </div>
+            <button class="btn btn-primary" type="submit">Submit</button>
+        </form>
+        <div *ngIf="actionFailed1 == true">
+            <div class="form-signin-heading" style="color:red;">{{messageToUser}}</div>
+        </div>
+    </div>
+    <!--Spacer-->
+    <hr class="spacer">
+    <!--Spacer-->
+    <div class="container">
+        <h3>Choose purchase policy to delete</h3>
+        <form [formGroup]="formDelete" (ngSubmit)="DeletePurchasePolicy()">
+            <div class="form-group">
+                <select formControlName="formDelete">
+                    <option *ngFor="let purchasePolicy of purchasePolicies" [ngValue]="purchasePolicy">{{purchasePolicy.Description}}</option>
+                </select>
+            </div>
+
+            <button class="btn btn-primary" type="submit">Submit</button>
+        </form>
+        <div *ngIf="actionFailed2 == true">
+            <div class="form-signin-heading" style="color:red;">{{messageToUser}}</div>
+        </div>
+    </div>
+    <hr class="spacer">
+    <button (click)="backToManagePurchases()">Back To Manage purchases</button>
+</body>
+</html>

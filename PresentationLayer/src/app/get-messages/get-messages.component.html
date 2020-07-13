@@ -1,0 +1,9 @@
+<h2>Messages</h2>
+
+<li *ngFor="let message of Messages">
+    {{message}}
+</li>
+
+<div *ngIf="showMessagesFailed == true">
+    <div class="form-signin-heading" style="color:red;">{{MessageToUser}}</div>
+</div>

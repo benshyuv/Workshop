@@ -1,0 +1,19 @@
+<div *ngIf="store">
+    <h1>Welcome To {{ store.ContactDetails.Name }} Store</h1>
+    <h2>{{ store.ContactDetails.Description }}</h2>
+
+    <div *ngFor="let item of items">
+        <div *ngIf="item">
+            <a routerLink='/home/{{ store.Id }}/{{ item.Id }}'> <h2>{{ item.Name }}</h2></a>
+            <p>{{ item.Price | currency:"ILS" }}</p>
+        </div>
+    </div>
+</div>
+
+<div *ngIf="actionFailed == true">
+    <div class="form-signin-heading" style="color:red;">{{MessageToUser}}</div>
+</div>
+
+<div *ngIf="permission == true">
+    <button (click)="storeManagment()">Store Management</button>
+</div>

@@ -1,0 +1,48 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+	<TypeScriptCompileBlocked>true</TypeScriptCompileBlocked>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <WarningLevel>3</WarningLevel>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Mvc" Version="2.2.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Session" Version="2.2.0" />
+    <PackageReference Include="Microsoft.AspNetCore.StaticFiles" Version="2.2.0" />
+    <PackageReference Include="Microsoft.TypeScript.MSBuild" Version="3.8.3">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\ServiceLayer\ServiceLayer.csproj" />
+    <ProjectReference Include="..\NotificationsManagment\NotificationsManagment.csproj">
+      <GlobalPropertiesToRemove></GlobalPropertiesToRemove>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <TypeScriptCompile Remove="src\app\add-store-manager\add-store-manager.component.spec.ts" />
+    <TypeScriptCompile Remove="src\app\add-store-owner\add-store-owner.component.ts" />
+    <TypeScriptCompile Remove="src\app\add-store-owner\add-store-owner.component.spec.ts" />
+    <TypeScriptCompile Remove="src\app\add-store-manager\add-store-manager.component.ts" />
+    <TypeScriptCompile Remove="src\app\manage-permissions\manage-permissions.component.ts" />
+    <TypeScriptCompile Remove="src\app\remove-store-manager\remove-store-manager.component.spec.ts" />
+    <TypeScriptCompile Remove="src\app\remove-store-manager\remove-store-manager.component.ts" />
+    <TypeScriptCompile Remove="src\app\manage-permissions\manage-permissions.component.spec.ts" />
+    <TypeScriptCompile Remove="src\app\store-managment\store-managment.component.spec.ts" />
+    <TypeScriptCompile Remove="src\app\store-managment\store-managment.component.ts" />
+    <TypeScriptCompile Remove="src\app\get-messages\get-messages.component.spec.ts" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Remove="wwwroot\runtime-es2015.js" />
+    <Content Remove="wwwroot\styles-es2015.js" />
+    <Content Remove="wwwroot\vendor-es2015.js" />
+    <Content Remove="wwwroot\main-es2015.js.map" />
+    <Content Remove="wwwroot\polyfills-es2015.js.map" />
+  </ItemGroup>
+</Project>

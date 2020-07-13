@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Discounts edit page</title>
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400" rel="stylesheet">
+</head>
+<body>
+    <h2>Discounts in {{storeName}}</h2>
+    <hr class="spacer">
+    <div *ngIf="discounts?.length > 0">
+        <div *ngFor="let discount of discounts">
+            <hr class="spacer">
+            <h3>{{discount.Description}}</h3>
+        </div>
+    </div>
+    <div *ngIf="actionFailed0 == true">
+        <div class="form-signin-heading" style="color:red;">{{messageToUser}}</div>
+    </div>
+    <hr class="spacer">
+    <button (click)="AddOpenDiscount()">Add Open Discount</button>
+    <hr class="spacer">
+    <button (click)="AddItemConditionalDiscount_MinItems_ToDiscountOnAll()">Add conditional discount for item: minimum items for discount on all</button>
+    <hr class="spacer">
+    <button (click)="AddItemConditionalDiscount_MinItems_ToDiscountOnExtraItems()">Add conditional discount for item: minimum items for discount on extra items</button>
+    <hr class="spacer">
+    <button (click)="AddStoreConditionalDiscount()">Add conditional discount for store</button>
+    <hr class="spacer">
+    <div class="container">
+        <h3>Compose 2 discounts</h3>
+        <form [formGroup]="formDiscountComposite" (ngSubmit)="ComposeTwoDiscounts()">
+            <hr class="spacer">
+            <h3>Choose left discount</h3>
+            <div class="form-group">
+                <select formControlName="formDiscountLeft" required>
+                    <option *ngFor="let discount of discounts" [ngValue]="discount">{{discount.Description}}</option>
+                </select>
+            </div>
+            <hr class="spacer">
+            <h3>Choose right discount</h3>
+            <div class="form-group">
+                <select formControlName="formDiscountRight" required>
+                    <option *ngFor="let discount of discounts" [ngValue]="discount">{{discount.Description}}</option>
+                </select>
+            </div>
+            <hr class="spacer">
+            <h3>Choose operator of the composite</h3>
+            <div class="form-group">
+                <select formControlName="formOperator" required>
+                    <option *ngFor="let operator of operatorsForComopsite" [ngValue]="operator">{{operator}}</option>
+                </select>
+            </div>
+            <button class="btn btn-primary" type="submit">Submit</button>
+        </form>
+        <div *ngIf="actionFailed1 == true">
+            <div class="form-signin-heading" style="color:red;">{{messageToUser}}</div>
+        </div>
+    </div>
+    <!--Spacer-->
+    <hr class="spacer">
+    <!--Spacer-->
+    <div class="container">
+        <h3>Choose discount to delete</h3>
+        <form [formGroup]="formDelete" (ngSubmit)="deleteDiscount()">
+            <div class="form-group">
+                <select formControlName="formDelete">
+                    <option *ngFor="let discount of discounts" [ngValue]="discount">{{discount.Description}}</option>
+                </select>
+            </div>
+
+            <button class="btn btn-primary" type="submit">Submit</button>
+        </form>
+        <div *ngIf="actionFailed2 == true">
+            <div class="form-signin-heading" style="color:red;">{{messageToUser}}</div>
+        </div>
+    </div>
+    <hr class="spacer">
+    <button (click)="backToDiscountManagement()">Back To Discount Management</button>
+</body>
+</html>

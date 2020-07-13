@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Custom Bootstrap Login Page</title>
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <form #UserHistoryForm="ngForm" (ngSubmit)="onSubmit()" class="form-signin">
+            <h3 class="form-signin-heading">User History</h3>
+            <mat-form-field>
+                <mat-label>Order</mat-label>
+                <mat-select [(value)]="selectedOrderId">
+                    <mat-option *ngFor="let Order of Orders" [value]="Order.OrderId">
+                        {{ Order.OrderId }}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+            <button class="btn btn-lg btn-primary btn-block" type="submit">Watch User History</button>
+        </form>
+        <div *ngIf="actionFailed == true">
+            <div class="form-signin-heading" style="color:red;">{{MessageToUser}}</div>
+        </div>
+    </div> 
+
+    <div *ngIf="selectedOrderId">
+        <div *ngFor="let storeAndItem of storesAndItems">
+            <div *ngIf="selectedOrderId == storeAndItem.orderId">
+                <h2>Order id: {{ selectedOrderId }}</h2>
+                <h3>Order time: {{ order.OrderTime }}</h3>
+                <h2>Store name: {{ storeAndItem.storeName }}</h2>
+                <h3>items:</h3>
+                <div *ngFor="let orderItem of Object.keys(storeAndItem.items)">
+                    <h3>item name: {{ storeAndItem.items[orderItem].Name }}</h3>
+                    <p>price per item: {{ storeAndItem.items[orderItem].DiscountedPricePerItem | currency:"ILS" }}</p>
+                    <p>amount: {{ storeAndItem.items[orderItem].Amount }}</p>
+                </div>
+            </div>
+        </div>
+        <div *ngIf="showTotal == true">
+            <h3>Total price: {{ order.Total  | currency:"ILS" }}</h3>
+        </div>
+    </div>
+
+</body>
+</html>

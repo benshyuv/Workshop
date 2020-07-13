@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Custom Bootstrap</title>
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <form #approveOwnerForm="ngForm" (ngSubmit)="onSubmit(approveOwnerForm.value)" class="form-signin">
+            <h2 class="form-signin-heading">Apporove Additional Store Owner To Store: {{ StoreName }}</h2>
+            <hr class="spacer">
+            <label for="username" class="sr-only">UserName</label>
+            <input type="text" name="username" class="form-control" placeholder="UserName" required autofocus ngModel>
+            <button class="btn btn-lg btn-primary btn-block" type="submit">Approve Store Owner</button>
+        </form>
+        <div *ngIf="approveStoreOwnerFailed == true">
+            <div class="form-signin-heading" style="color:red;">{{MessageToUser}}</div>
+        </div>
+    </div>
+</body>
+</html>

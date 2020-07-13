@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Custom Bootstrap Login Page</title>
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <form #removeOwnerForm="ngForm" (ngSubmit)="onSubmit(removeOwnerForm.value)" class="form-signin">
+            <h2 class="form-signin-heading">Remove Store Owner From Store: {{ StoreName }}</h2>
+            <!--Spacer-->
+            <hr class="spacer">
+            <!--Spacer-->
+            <label for="username" class="sr-only">UserName</label>
+            <input type="text" name="username" class="form-control" placeholder="UserName" required autofocus ngModel>
+            <button class="btn btn-lg btn-primary btn-block" type="submit">Remove Store Owner</button>
+        </form>
+        <div *ngIf="removeStoreOwnerFailed == true">
+            <div class="form-signin-heading" style="color:red;">{{MessageToUser}}</div>
+        </div>
+    </div> <!-- /container -->
+</body>
+</html>

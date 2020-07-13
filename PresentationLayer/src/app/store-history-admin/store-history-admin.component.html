@@ -1,0 +1,34 @@
+<div *ngIf="store">
+    <h2>History of {{ storeName }}: Store</h2>
+
+    <div *ngFor="let order of Orders">
+        <div *ngIf="order">
+            <h3>order id: {{ order.OrderId }}</h3>
+            <h3>order time: {{ order.OrderTime }}</h3>
+            <h3>items:</h3>
+            <div *ngFor="let orderAndItems of ordersAndItems">
+                <div *ngIf="order.OrderId == orderAndItems.orderId">
+                    <div *ngFor="let orderItem of Object.keys(orderAndItems.items)">
+                        <h3>item name: {{ orderAndItems.items[orderItem].Name }}</h3>
+                        <p>price per item: {{ orderAndItems.items[orderItem].DiscountedPricePerItem | currency:"ILS" }}</p>
+                        <p>amount: {{ orderAndItems.items[orderItem].Amount }}</p>
+                    </div>
+                    <p>total price for the order: {{ order.Total | currency:"ILS" }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div *ngIf="storeHistoryFailed == true">
+    <div class="form-signin-heading" style="color:red;">{{MessageToUser}}</div>
+</div>
+
+<div *ngIf="permission == false">
+    <div class="form-signin-heading" style="color:red;">Action Faild: Don't have the right permission</div>
+</div>
+
+<button (click)="backToStore()">Back To The Store</button>
+
+
+

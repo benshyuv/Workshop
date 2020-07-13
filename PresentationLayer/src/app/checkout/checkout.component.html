@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Custom Bootstrap</title>
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <form #checkoutForm="ngForm" (ngSubmit)="onSubmit(checkoutForm.value)" class="form-signin">
+            <h2 class="form-signin-heading">Checkout</h2>
+            <label for="payingCustomerName" class="sr-only">Paying Customer Name</label>
+            <input type="text" name="payingCustomerName" class="form-control" placeholder="Paying Customer Name" required autofocus ngModel>
+            <!--Spacer-->
+            <hr class="spacer">
+            <!--Spacer-->
+            <label for="card" class="sr-only">Credit Card Number</label>
+            <input type="text" name="card" class="form-control" placeholder="Credit Card Number" required autofocus ngModel>
+            <!--Spacer-->
+            <hr class="spacer">
+            <!--Spacer-->
+            <mat-form-field>
+                <mat-label>Expire Date</mat-label>
+                <input matInput [matDatepicker]="dp" [formControl]="date">
+                <mat-datepicker-toggle matSuffix [for]="dp"></mat-datepicker-toggle>
+                <mat-datepicker #dp
+                                startView="multi-year"
+                                (yearSelected)="chosenYearHandler($event)"
+                                (monthSelected)="chosenMonthHandler($event, dp)"
+                                panelClass="example-month-picker">
+                </mat-datepicker>
+            </mat-form-field>
+            <!--Spacer-->
+            <hr class="spacer">
+            <!--Spacer-->
+            <label for="ccv" class="sr-only">CCV</label>
+            <input type="text" name="ccv" class="form-control" placeholder="CCV" required autofocus ngModel>
+            <!--Spacer-->
+            <hr class="spacer">
+            <!--Spacer-->
+            <label for="id" class="sr-only">Paying Customer ID</label>
+            <input type="text" name="id" class="form-control" placeholder="Paying Customer ID" required autofocus ngModel>
+            <!--Spacer-->
+            <hr class="spacer">
+            <!--Spacer-->
+            <label for="address" class="sr-only">Address</label>
+            <input type="text" name="address" class="form-control" placeholder="Address" required autofocus ngModel>
+            <!--Spacer-->
+            <hr class="spacer">
+            <!--Spacer-->
+            <label for="city" class="sr-only">City</label>
+            <input type="text" name="city" class="form-control" placeholder="City" required autofocus ngModel>
+            <!--Spacer-->
+            <hr class="spacer">
+            <!--Spacer-->
+            <label for="country" class="sr-only">Country</label>
+            <input type="text" name="country" class="form-control" placeholder="Country" required autofocus ngModel>
+            <!--Spacer-->
+            <hr class="spacer">
+            <!--Spacer-->
+            <label for="zipcode" class="sr-only">Zip Code</label>
+            <input type="text" name="zipcode" class="form-control" placeholder="Zip Code" required autofocus ngModel>
+            <button class="btn btn-lg btn-primary btn-block" type="submit">Purchase</button>
+        </form>
+        <div *ngIf="checkoutFailed == true">
+            <div class="form-signin-heading" style="color:red;">{{MessageToUser}}</div>
+        </div>
+    </div> 
+</body>
+</html>

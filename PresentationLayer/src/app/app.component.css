@@ -1,0 +1,12 @@
+input[type=text] {
+    width: 40%;
+    margin: 10px 5px;
+    box-sizing: border-box;
+    color: black;
+    font-family: 'Roboto', sans-serif;
+}
+
+.spacer {
+    border: none;
+    margin: 14px;
+}

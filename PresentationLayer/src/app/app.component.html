@@ -1,0 +1,53 @@
+<mat-toolbar color="primary">
+    <mat-toolbar-row>
+        <button mat-icon-button>
+            <mat-icon (click)="sidenav.toggle()">menu</mat-icon>
+        </button>
+        <a [routerLink]="['/']"><h1>Stores Web</h1></a>
+        <span class="menu-spacer"></span>
+        <div *ngIf="this.User; else loggedOut">
+            <span class="menu-spacer"></span>
+            <a mat-button [routerLink]="'/logout'"> Logout </a>
+            <a mat-button [routerLink]="'/getMessages'"> Messages </a>
+            <h2> Hello {{this.User}}! </h2>
+        </div>
+        <ng-template #loggedOut>
+            <span class="menu-spacer"></span>
+            <a mat-button [routerLink]="'/login'"> Login </a>
+            <a mat-button [routerLink]="'/register'"> Register </a>
+            <h2> Hello Guest!     </h2>
+        </ng-template>
+        <span class="menu-spacer"></span>
+        <input type="text" #SearchItemName id="SearchItemName">
+        <hr class="spacer">
+        <button (click)="triggerSearchItems(SearchItemName.value)" formtarget="_blank">Search</button>
+        <hr class="spacer">
+        <button (click)="triggerExtendedSearchItems()" formtarget="_blank">Extended Search</button>
+        <hr class="spacer">
+
+
+
+    </mat-toolbar-row>
+</mat-toolbar>
+<mat-sidenav-container>
+    <mat-sidenav #sidenav>
+        <mat-nav-list>
+            <div *ngIf="this.User">
+                <a mat-list-item (click)="sidenav.toggle()" [routerLink]="'/openStore'">Open Store </a>
+                <a mat-list-item (click)="sidenav.toggle()" [routerLink]="'/UserHistory'">My History </a>
+            </div>
+            <div *ngIf="isAdmin == true">
+                <a mat-list-item (click)="sidenav.toggle()" [routerLink]="'/usersHistoryAdmin'">Users History </a>
+                <a mat-list-item (click)="sidenav.toggle()" [routerLink]="'/showStatistics'">Show Statistics </a>
+            </div>
+            <a mat-list-item (click)="sidenav.toggle()" [routerLink]="'/viewCart'">View Cart </a>
+            <a mat-list-item (click)="sidenav.toggle()" href="" mat-list-item>Close</a>
+        </mat-nav-list>
+    </mat-sidenav>
+    <mat-sidenav-content>
+        <div style="height: 88vh;">
+            <router-outlet></router-outlet>
+        </div>
+    </mat-sidenav-content>
+</mat-sidenav-container>
+

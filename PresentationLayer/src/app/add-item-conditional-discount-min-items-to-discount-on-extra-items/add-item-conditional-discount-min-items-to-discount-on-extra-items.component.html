@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>>Add conditional discount for item discount on extra</title>
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <form #addItemConditionalDiscount="ngForm" ngNativeValidate (ngSubmit)="onSubmit(addItemConditionalDiscount.value)" class="form-signin">
+            <h2 class="form-signin-heading">Add conditional discount for item in store {{ storeName }}: minimum items for discount on extra</h2>
+            <hr class="spacer">
+            <mat-form-field>
+                <mat-label>Item</mat-label>
+                <mat-select [(value)]="selectedItemId">
+                    <mat-option *ngFor="let item of items" [value]="item.Id">
+                        {{ item.Name }}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+            <hr class="spacer">
+            <label for="discountForExtra" class="sr-only">Discount For Extra</label>
+            <input type="number" step="0.01" min="0" max="1" name="discountForExtra" class="form-control" placeholder="Discount For Extra" required autofocus ngModel>
+            <hr class="spacer">
+            <label for="durationInDays" class="sr-only">Number of days for discount</label>
+            <input type="number" name="durationInDays" class="form-control" placeholder="Duration in days" required autofocus ngModel>
+            <hr class="spacer">
+            <label for="minItems" class="sr-only">Minimum items for discount</label>
+            <input type="number" name="minItems" class="form-control" placeholder="Minimum items" required autofocus ngModel>
+            <hr class="spacer">
+            <label for="extraItems" class="sr-only">Extra items for discount</label>
+            <input type="number" name="extraItems" class="form-control" placeholder="Extra items" required autofocus ngModel>
+            <hr class="spacer">
+            <button class="btn btn-lg btn-primary btn-block" type="submit">Add</button>
+        </form>
+        <div *ngIf="actionFailed == true">
+            <div class="form-signin-heading" style="color:red;">{{messageToUser}}</div>
+        </div>
+    </div>
+</body>
+</html>

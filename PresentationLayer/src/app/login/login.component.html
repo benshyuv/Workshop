@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Custom Bootstrap Login Page</title>
+  <link href="https://fonts.googleapis.com/css?family=Roboto:300,400" rel="stylesheet">
+</head>
+<body>
+  <!-- Fully Responsive Login Page-->
+    <div class="container">
+        <form #loginForm="ngForm" (ngSubmit)="onSubmit(loginForm.value)" class="form-signin">
+            <h2 class="form-signin-heading">Login</h2>
+            <label for="username" class="sr-only">Username</label>
+            <input type="text" name="username" class="form-control" placeholder="Username" required autofocus ngModel>
+            <!--Spacer-->
+            <hr class="spacer">
+            <!--Spacer-->
+            <label for="password" class="sr-only">Password</label>
+            <input type="password" name="password" class="form-control" placeholder="Password" required ngModel>
+            <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+        </form>
+        <div *ngIf="loginFailed == true">
+            <div class="form-signin-heading" style="color:red;">{{MessageToUser}}</div>
+        </div>
+    </div> <!-- /container -->
+</body>
+</html>

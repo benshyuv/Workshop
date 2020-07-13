@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Custom Bootstrap</title>
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <form #editItemForm="ngForm" (ngSubmit)="onSubmit(editItemForm.value)" class="form-signin">
+            <h2 class="form-signin-heading">Edit Item {{ item.Name }} Of Store: {{ StoreName }}</h2>
+            <hr class="spacer">
+            <label for="itemname" class="sr-only">Item Name</label>
+            <input type="text" name="itemname" class="form-control" placeholder="Item Name" required autofocus ngModel>
+            <hr class="spacer">
+            <label for="amount" class="sr-only">Amount</label>
+            <input type="number" name="amount" class="form-control" placeholder="Amount" required autofocus ngModel>
+            <hr class="spacer">
+            <label for="rank" class="sr-only">Rank</label>
+            <input type="number" name="rank" class="form-control" placeholder="Rank" required autofocus ngModel>
+            <hr class="spacer">
+            <label for="categories" class="sr-only">Categories</label>
+            <input type="text" name="categories" class="form-control" placeholder="Categories" required autofocus ngModel>
+            <hr class="spacer">
+            <label for="price" class="sr-only">Item Price</label>
+            <input type="number" name="price" class="form-control" placeholder="Item Price" required autofocus ngModel>
+            <hr class="spacer">
+            <label for="keywords" class="sr-only">Key Words</label>
+            <input type="text" name="keywords" class="form-control" placeholder="Key Words" required autofocus ngModel>
+            <button class="btn btn-lg btn-primary btn-block" type="submit">Update Item</button>
+        </form>
+        <div *ngIf="editItemFailed == true">
+            <div class="form-signin-heading" style="color:red;">{{MessageToUser}}</div>
+        </div>
+    </div> 
+</body>
+</html>

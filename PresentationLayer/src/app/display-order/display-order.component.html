@@ -1,0 +1,24 @@
+<h2>Your Order</h2>
+
+<div *ngFor="let storeAndItem of storesAndItems">
+    <h2>Store name: {{ storeAndItem.storeName }}</h2>
+    <div *ngFor="let orderItem of Object.keys(storeAndItem.items)">
+        <h3>item name: {{ storeAndItem.items[orderItem].Name }}</h3>
+        <p>price per item: {{ storeAndItem.items[orderItem].DiscountedPricePerItem | currency:"ILS" }}</p>
+        <p>amount: {{ storeAndItem.items[orderItem].Amount }}</p>
+    </div>
+</div>
+
+<div *ngIf="order">
+    <h3>Total price: {{ order.Total  | currency:"ILS" }}</h3>
+</div>
+
+<div *ngIf="checkoutFailed == true">
+    <div class="form-signin-heading" style="color:red;">{{MessageToUser}}</div>
+</div>
+
+<div *ngIf="checkoutFailed == false">
+    <button (click)="onApprove()">
+        Continue To Purchase
+    </button>
+</div>

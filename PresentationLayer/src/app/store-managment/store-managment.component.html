@@ -1,0 +1,46 @@
+<div *ngIf="historyAdminPermission == true">
+    <button (click)="storeHistoryAdmin()">Store History</button>
+</div>
+
+<div *ngIf="inventoryPermission == true">
+    <button (click)="addItem()">Add Item</button>
+</div>
+<hr class="spacer">
+<div *ngIf="historyPermission == true">
+    <button (click)="storeHistory()">Store History</button>
+</div>
+<hr class="spacer">
+<div *ngIf="appointOwnerPermission == true">
+    <button (click)="AppointOwner()">Appoint Additional Store Owner</button>
+</div>
+<hr class="spacer">
+<div *ngIf="appointOwnerPermission == true">
+    <button (click)="ApproveOwner()">Approve Additional Store Owner</button>
+</div>
+<hr class="spacer">
+<div *ngIf="appointManagerPermission == true">
+    <button (click)="AppointManager()">Appoint Additional Store Manager</button>
+</div>
+<hr class="spacer">
+<div *ngIf="editPermission == true">
+    <button (click)="managePermissions()">Manage Store Manger Permissions</button>
+</div>
+<hr class="spacer">
+<div *ngIf="removeManagerPermission == true">
+    <button (click)="removeStoreManager()">Remove Store Manager</button>
+</div>
+<hr class="spacer">
+<div *ngIf="removeOwnerPermission == true">
+    <button (click)="removeStoreOwner()">Remove Store Owner</button>
+</div>
+<hr class="spacer">
+<div *ngIf="policyPermission == true">
+    <button (click)="manageDiscounts()">Manage discounts</button>
+</div>
+<hr class="spacer">
+<div *ngIf="policyPermission == true">
+    <button (click)="managePurchases()">Manage purchases</button>
+</div>
+<hr class="spacer">
+<button (click)="backToStore()">Back To The Store</button>
+

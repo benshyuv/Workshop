@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Search Item Results</title>
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400" rel="stylesheet">
+</head>
+<body>
+    <div *ngFor="let StoreName of Object.keys(itemsByStoreName)">
+        <h2>Store name: {{ StoreName }}</h2>
+
+        <div *ngFor="let item of itemsByStoreName[StoreName]">
+            <div *ngIf=" item">
+                <a routerLink='/home/{{ item.StoreId }}/{{ item.Id }}'> <h2>{{ item.Name }}</h2></a>
+                <p>{{ item.Price | currency:"ILS" }}</p>
+            </div>
+        </div>
+    </div>
+    <div *ngIf="searchFailed == true">
+        <div class="form-signin-heading" style="color:red;">{{messageToUser}}</div>
+    </div>
+</body>
+</html>

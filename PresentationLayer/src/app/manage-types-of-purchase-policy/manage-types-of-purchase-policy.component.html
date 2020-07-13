@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>purchase policy types managment</title>
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400" rel="stylesheet">
+</head>
+<body>
+    <h2>Purchase policy types available in {{storeName}}</h2>
+    <div *ngFor="let purchasePolicyTypeAllowed of purchasePolicyTypesAllowed">
+        <hr class="spacer">
+        <h3>{{purchasePolicyTypeAllowed}}</h3>
+    </div>
+
+    <div *ngIf="actionFailed == true">
+        <div class="form-signin-heading" style="color:red;">{{messageToUser}}</div>
+    </div>
+    <!--Spacer-->
+    <hr class="spacer">
+    <!--Spacer-->
+    <div class="container">
+        <h1>Choose purchase policy type to delete</h1>
+
+        <form [formGroup]="formDeleteType" (ngSubmit)="deletePurchasePolicyType()">
+
+            <div class="form-group">
+                <select formControlName="formDeleteType">
+                    <option *ngFor="let purchasePolicyTypeAllowedToDelete of purchasePolicyTypesAllowed" [ngValue]="purchasePolicyTypeAllowedToDelete">{{purchasePolicyTypeAllowedToDelete}}</option>
+                </select>
+            </div>
+
+            <button class="btn btn-primary" type="submit">Submit</button>
+        </form>
+        <div *ngIf="actionFailed == true">
+            <div class="form-signin-heading" style="color:red;">{{messageToUser}}</div>
+        </div>
+    </div>
+    <!--Spacer-->
+    <hr class="spacer">
+    <!--Spacer-->
+    <div class="container">
+        <h1>Choose purchase policy type to add</h1>
+        <form [formGroup]="formAddType" (ngSubmit)="addPurchasePolicyType()">
+
+            <div class="form-group">
+                <select formControlName="formAddType">
+                    <option *ngFor="let  purchasePolicyTypeToAdd of possibleTypesToAdd" [ngValue]="purchasePolicyTypeToAdd">{{purchasePolicyTypeToAdd}}</option>
+                </select>
+            </div>
+
+            <button class="btn btn-primary" type="submit">Submit</button>
+        </form>
+        <div *ngIf="actionFailed == true">
+            <div class="form-signin-heading" style="color:red;">{{messageToUser}}</div>
+        </div>
+    </div>
+    <hr class="spacer">
+    <button (click)="backToManagePurchases()">Back To Manage purchases</button>
+</body>
+</html>
+

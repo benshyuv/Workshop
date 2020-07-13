@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Discount types managment</title>
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400" rel="stylesheet">
+</head>
+<body>
+    <h2>Discount types available in {{storeName}}</h2>
+    <div *ngFor="let discountTypeAllowed of discountTypesAllowed">
+        <hr class="spacer">
+        <h3>{{discountTypeAllowed}}</h3>
+    </div>
+
+    <div *ngIf="actionFailed == true">
+        <div class="form-signin-heading" style="color:red;">{{messageToUser}}</div>
+    </div>
+    <!--Spacer-->
+    <hr class="spacer">
+    <!--Spacer-->
+    <div class="container">
+        <h1>Choose discount type to delete</h1>
+
+        <form [formGroup]="formDeleteType" (ngSubmit)="deleteDiscountType()">
+
+            <div class="form-group">
+                <select formControlName="formDeleteType">
+                    <option *ngFor="let discountTypeAllowedToDelete of discountTypesAllowed" [ngValue]="discountTypeAllowedToDelete">{{discountTypeAllowedToDelete}}</option>
+                </select>
+            </div>
+
+            <button class="btn btn-primary" type="submit">Submit</button>
+        </form>
+        <div *ngIf="actionFailed == true">
+            <div class="form-signin-heading" style="color:red;">{{messageToUser}}</div>
+        </div>
+    </div>
+    <!--Spacer-->
+    <hr class="spacer">
+    <!--Spacer-->
+    <div class="container">
+        <h1>Choose discount type to add</h1>
+        <form [formGroup]="formAddType" (ngSubmit)="addDiscountType()">
+
+            <div class="form-group">
+                <select formControlName="formAddType">
+                    <option *ngFor="let discountTypeToAdd of possibleTypesToAdd" [ngValue]="discountTypeToAdd">{{discountTypeToAdd}}</option>
+                </select>
+            </div>
+
+            <button class="btn btn-primary" type="submit">Submit</button>
+        </form>
+        <div *ngIf="actionFailed == true">
+            <div class="form-signin-heading" style="color:red;">{{messageToUser}}</div>
+        </div>
+    </div>
+    <hr class="spacer">
+    <button (click)="backToDiscountManagement()">Back To Discount Management</button>
+</body>
+</html>

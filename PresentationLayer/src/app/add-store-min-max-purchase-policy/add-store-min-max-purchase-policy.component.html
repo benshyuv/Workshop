@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Add Store Min Max Purchase Policy</title>
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <form #addStoreMinMaxPolicy="ngForm" ngNativeValidate (ngSubmit)="onSubmit(addStoreMinMaxPolicy.value)" class="form-signin">
+            <h2 class="form-signin-heading">Add store min max policy in store: {{ storeName }}</h2>
+            <!--Spacer-->
+            <hr class="spacer">
+            <!--Spacer-->
+            <label for="minAmount" class="sr-only">Minimum amount</label>
+            <input type="number" name="minAmount" class="form-control" placeholder="Minimum amount" autofocus ngModel>
+            <!--Spacer-->
+            <hr class="spacer">
+            <!--Spacer-->
+            <label for="maxAmount" class="sr-only">Maximum amount</label>
+            <input type="number" name="maxAmount" class="form-control" placeholder="Maximum amount" autofocus ngModel>
+            <!--Spacer-->
+            <hr class="spacer">
+            <!--Spacer-->
+            <button class="btn btn-lg btn-primary btn-block" type="submit">Add</button>
+        </form>
+        <div *ngIf="actionFailed == true">
+            <div class="form-signin-heading" style="color:red;">{{messageToUser}}</div>
+        </div>
+    </div> <!-- /container -->
+</body>
+</html>

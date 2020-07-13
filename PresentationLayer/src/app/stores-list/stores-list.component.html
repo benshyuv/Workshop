@@ -1,0 +1,14 @@
+<h2>Stores</h2>
+
+<div *ngFor="let store of stores">
+    
+    <h3>
+        <a title="{{store.ContactDetails.Description}}" routerLink='/home/{{ store.Id }}'> {{ store.ContactDetails.Name }}</a>
+    </h3>
+</div>
+
+<div *ngIf="getAllStoresFaild == true">
+    <div class="form-signin-heading" style="color:red;">{{MessageToUser}}</div>
+</div>
+
+

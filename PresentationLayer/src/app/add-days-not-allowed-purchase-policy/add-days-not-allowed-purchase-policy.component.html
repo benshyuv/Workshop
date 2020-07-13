@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Add days not allowed purchase Policy</title>
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <form [formGroup]="selectDaysNotAllowed" (ngSubmit)="onSubmit()">
+            <h2 class="form-signin-heading">Select days not possible to purchase in store: {{ storeName }}</h2>
+            <!--Spacer-->
+            <hr class="spacer">
+            <!--Spacer-->
+            <label for="durationInDays" class="sr-only">Number of days for discount</label>
+            <p>
+                <input type="checkbox" formControlName="Sunday">Sunday
+            </p>
+            <p>
+                <input type="checkbox" formControlName="Monday">Monday
+            </p>
+            <p>
+                <input type="checkbox" formControlName="Tuesday">Tuesday
+            </p>
+            <p>
+                <input type="checkbox" formControlName="Wednesday">Wednesday
+            </p>
+            <p>
+                <input type="checkbox" formControlName="Thursday">Thursday
+            </p>
+            <p>
+                <input type="checkbox" formControlName="Friday">Friday
+            </p>
+            <p>
+                <input type="checkbox" formControlName="Saturday">Saturday
+            </p>
+            <!--Spacer-->
+            <hr class="spacer">
+            <!--Spacer-->
+            <button class="btn btn-lg btn-primary btn-block" type="submit">Select</button>
+        </form>
+        <div *ngIf="actionFailed == true">
+            <div class="form-signin-heading" style="color:red;">{{messageToUser}}</div>
+        </div>
+    </div> <!-- /container -->
+</body>
+</html>

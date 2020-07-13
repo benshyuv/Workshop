@@ -1,0 +1,7 @@
+<div *ngIf="logoutSucces == false; else loggedOut">
+    <div class="form-signin-heading" style="color:red;">{{MessageToUser}}</div>
+</div>
+
+<ng-template #loggedOut>
+    <div class="form-signin-heading" style="color:rebeccapurple;">Logout Success - Hope to see you soon</div>
+</ng-template>

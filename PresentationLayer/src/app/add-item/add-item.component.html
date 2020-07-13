@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Custom Bootstrap Login Page</title>
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <form #addItemForm="ngForm" (ngSubmit)="onSubmit(addItemForm.value)" class="form-signin">
+            <h2 class="form-signin-heading">Add Item To Store: {{ StoreName }}</h2>
+            <!--Spacer-->
+            <hr class="spacer">
+            <!--Spacer-->
+            <label for="itemname" class="sr-only">Item Name</label>
+            <input type="text" name="itemname" class="form-control" placeholder="Item Name" required autofocus ngModel>
+            <!--Spacer-->
+            <hr class="spacer">
+            <!--Spacer-->
+            <label for="amount" class="sr-only">Amount</label>
+            <input type="number" name="amount" class="form-control" placeholder="Amount" required autofocus ngModel>
+            <!--Spacer-->
+            <hr class="spacer">
+            <!--Spacer-->
+            <label for="categories" class="sr-only">Categories</label>
+            <input type="text" name="categories" class="form-control" placeholder="Categories" required autofocus ngModel>
+            <!--Spacer-->
+            <hr class="spacer">
+            <!--Spacer-->
+            <label for="price" class="sr-only">Item Price</label>
+            <input type="number" name="price" class="form-control" placeholder="Item Price" required autofocus ngModel>
+            <!--Spacer-->
+            <hr class="spacer">
+            <!--Spacer-->
+            <label for="keywords" class="sr-only">Key Words</label>
+            <input type="text" name="keywords" class="form-control" placeholder="Key Words" required autofocus ngModel>
+            <button class="btn btn-lg btn-primary btn-block" type="submit">Add Item</button>
+        </form>
+        <div *ngIf="addItemFailed == true">
+            <div class="form-signin-heading" style="color:red;">{{MessageToUser}}</div>
+        </div>
+    </div> <!-- /container -->
+</body>
+</html>

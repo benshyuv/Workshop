@@ -1,0 +1,24 @@
+<h2>Shopping Cart</h2>
+
+<body>
+    <div *ngFor="let name of Object.keys(itemsToPresent)">
+        <h2>Store name: {{ name }}</h2>
+
+        <div *ngFor="let pair of itemsToPresent[name]">
+            <div *ngIf="pair">
+                <h3>item name: {{ pair.item.Name }}</h3>
+                <p>price per item: {{ pair.item.Price | currency:"ILS" }}</p>
+                <p>amount: {{ pair.amount }}</p>
+                <button (click)="RemoveItemFromCart(pair.storeId,pair.item.Id)">Remove from cart</button>
+                <button (click)="editItemAmount(pair.storeId,pair.item.Id)">Update Amount</button>
+            </div>
+        </div>
+    </div>
+    <div><h3>Total price: {{ total  | currency:"ILS" }}</h3></div>
+
+    <button (click)="checkout()">Checkout</button>
+
+    <div *ngIf="viewCartFaild == true">
+        <div class="form-signin-heading" style="color:red;">{{MessageToUser}}</div>
+    </div>
+</body>

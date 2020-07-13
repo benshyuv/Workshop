@@ -1,0 +1,25 @@
+body {
+    font-family: 'Roboto', sans-serif;
+}
+
+.form-signin-heading {
+    font-weight: 300;
+    text-align: center;
+}
+
+.spacer {
+    border: none;
+    margin: 14px;
+}
+
+.btn-primary {
+    background-color: #673ab7;
+    height: 50px;
+    width: 150px;
+}
+
+    .btn-primary:hover {
+        background-color: #673ab7;
+        height: 50px;
+        width: 150px;
+    }

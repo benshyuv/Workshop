@@ -1,0 +1,37 @@
+<div class="container">
+
+    <form [formGroup]="form" (ngSubmit)="editPermission()">
+        <h2>Add Or Remove Permission To Store Manager Of Store: {{ StoreName }}</h2>
+        <div class="form-group">
+
+            <div>
+                <label for="username">UserName</label>
+                <input id="username" type="text" name="username" formControlName="username">
+            </div>
+            <hr class="spacer">
+            <p>Permission:</p>
+            <select formControlName="formEditPermission">
+                <option *ngFor="let permission of allPermissions" [ngValue]="permission">{{permission}}</option>
+            </select>
+            <hr class="spacer">
+            <div>
+                <input id="add" type="radio" value="true" name="addOrRemove" formControlName="addOrRemove">
+                <label for="add">Add Permission</label>
+            </div>
+
+            <div>
+                <input id="remove" type="radio" value="false" name="addOrRemove" formControlName="addOrRemove">
+                <label for="remove">Remove Permission</label>
+            </div>
+
+            <div *ngIf="f.addOrRemove.touched && f.addOrRemove.invalid" class="alert alert-danger">
+                <div *ngIf="f.addOrRemove.errors.required">Add or Remove is required.</div>
+            </div>
+        </div>
+
+        <button class="btn btn-primary" type="submit" [disabled]="!form.valid">Edit Permission</button>
+    </form>
+    <div *ngIf="managePermissionsFailed == true">
+        <div class="form-signin-heading" style="color:red;">{{MessageToUser}}</div>
+    </div>
+</div>
